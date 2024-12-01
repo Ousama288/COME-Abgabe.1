@@ -1,0 +1,280 @@
+\documentclass[1pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{fancyhdr} % Paket für Fußzeilen
+\usepackage[ngerman]{babel}
+\addto\captionsngerman{\renewcommand{\abstractname}{Einleitung}}
+% Custom command for Variance
+\newcommand{\Var}{\mathrm{Var}}
+\usepackage{amsmath}
+\usepackage{parskip}
+\usepackage{enumitem}
+\usepackage{csquotes}
+\usepackage{float}
+\usepackage[backend=biber, style=numeric
+,doi=false,isbn=false,eprint=false,note=false,edition=false,url=false]{biblatex}
+\addbibresource{Export.bib}
+\usepackage[T1]{fontenc}   
+\usepackage{url} % benötigt für URL in Literaturverzeichnis
+
+\begin{document}
+\begin{titlepage}
+\begin{center}
+    \Large{\textbf{Universität Bielefeld}}\\
+    \Large{Fakultät für Wirtschaftswissenschaften}\\
+    \vspace{3cm}\
+    \Large{\textbf{Abgabe1}}\\
+    \Large Im Studiengang Statistische Wissenschaften\\
+    \ Für Computergestützte Methoden\\
+    \vspace{2cm}\
+    \ Vorname Zuname\\
+    \author[{\Large{\textbf{Ousama Al Hussein Alothman}}}\\
+    \vspace{1cm}\
+    \Large{\textbf{ Matrikel-Nr.4200108}}\\
+\end{center}
+\vspace{7cm}\
+\date [Bielefeld, November 2024
+\end{titlepage}
+\newpage
+
+\begin{abstract}
+Die Verwaltung von Daten und Dokumenten spielt eine wichtige Rolle für das Schreiben einer Forschungs- oder Masterarbeit, weshalb diese Abgabe die zwei wichtigen und weit verbreiteten Programme Overleaf und SQLite benutzt. Overleaf ist eine kostenfreie Online-Plattform, die einen LaTeX-Editor im Hintergrund benutzt und die Erstellung wissenschaftlicher Dokumente für Studierende oder Forschende ermöglicht. Ein sehr wichtiger Vorteil besteht darin, dass alle Änderungen in den Dokumenten automatisch gespeichert werden und in der Cloud verfügbar sind. SQLite ist eine leicht erlernbare Programmiersprache, welche in den Bereichen der Datenverarbeitung und Datenhaltung verwendet wird.
+\end{abstract}
+
+
+\tableofcontents % Inhaltsverzeichnis erstellen
+\newpage
+\section{Der zentrale Grenzwertsatz}
+\label{ZentraleGrenzwertsatz} 
+Der zentrale Grenzwertsatz (ZGS) ist ein fundamentales Resultat der Wahrscheinlichkeitstheorie, das die Verteilung von Summen unabhängiger, identisch verteilter (i.i.d.) Zufallsvariablen (ZV) beschreibt.   
+ Er besagt, dass unter bestimmten Voraussetzungen die Summe einer großen Anzahl solcher ZV
+ annähernd normalverteilt ist, unabhängig von der Verteilung der einzelnen ZV. Dies ist besonders nützlich, da
+die Normalverteilung gut untersucht und mathematisch handhabbar ist.
+\subsection{Aussage}
+Sei $X_1, X_2, \ldots, X_n$ eine Folge von i.i.d. ZV mit dem Erwartungswert $\mu = \mathbb{E}(X_i)$
+und der Varianz $ \sigma^2 \ = \Var(X_i),$ wobei $0 < \sigma^2\ < \infty \ $ gelte. Dann konvergiert
+die standardisierte Summe Zn dieser ZV für $\ n \to \infty \ $ in Verteilung gegen eine
+Standardnormalverteilungs:
+\footnote{\footnotesize Der zentrale Grenzwertsatz hat verschiedene Verallgemeinerungen. Eine davon ist der \textbf{Lindeberg-Feller-Zentrale-Grenzwertsatz}[\cite{KlenkeWTheorie}, S. 328] der schwächere Bedingungen an die Unabhängigkeit und die identische Verteilung der ZV stellt}
+
+\begin{equation}\label{formall}\
+ Z_n = \frac{\sum_{i=1}^{n} X_i - n\mu}{\sigma \sqrt{n}} \xrightarrow{d} N(0, 1)\
+\end{equation}
+Das bedeutet, dass für große n die Summe der ZV näherungsweise 
+normalverteilt mit Erwartungswert nµ und Varianz $ n\sigma^2 $:\\
+
+\begin{equation} \label{formall}
+ \sum_{i=1}^n\ X_i \sim N(n\mu, n\sigma^2) 
+\end{equation}
+
+\subsection{Erklärung der Standardisierung}
+Um die Summe der ZV in eine Standardnormalverteilung zu transformieren,
+subtrahiert man den Erwartungswert nµ und teilt durch die Standardabweichung 
+$\sigma \sqrt{n} $. Dies führt zu der obigen Formel (1). Die Darstellung (2) ist für
+${n \to \infty}$ nicht wohl definiert.
+
+\subsection{Anwendungen}\
+Der ZGS wird in vielen Bereichen der Statistik und der Wahrscheinlichkeitstheorie angewendet. 
+Typische Beispiel sind:\\
+\newpage
+
+\begin{itemize}
+\item \textbf {Binomialverteilung }\\
+\label{Binomialverteilung}
+\\Es beschreibt die Wahrscheinlichkeit[\cite{DeGruyterStochastik}, S.33 ]  dass in einer festen Anzahl von Versuchen (n) ein bestimmtes Ereignis (z.B. ein Erfolg) in einer bestimmten Anzahl von Fällen (k) eintritt.wobei;\\
+\\n: Anzahl der Versuche.
+\\p: Wahrscheinlichkeit für einen Erfolg.
+\\\( q = 1 - p \) : Wahrscheinlichkeit für einen Misserfolg.\\
+\\Die folgende Formel beschreibt die Wahrscheinlichkeitsfunktion:  $$ P(X = k) = \binom{n}{k} p^k q^{n-k} $$
+ \\ Der Erwartungswert :\[E(X) = n \cdot p\]
+\\ Die Varianz :\[\Var(X) =  n \cdot p \cdot (1 - p) = n \cdot p \cdot q\]\\
+
+\item \textbf {Poisson Verteilung} \\
+\label{Poisson Verteilung}
+Die Zufallsvariable  \(Y\) besitzt eine Poisson-Verteilung [\cite{DeGruyterStochastik} , S.39] mit
+dem Parameter  \[\lambda \in (0; \infty)\]
+$$P(X = k) = \frac{\lambda^k e^{-\lambda}}{k!} ,k \in \mathbb{N}_0 $$
+ Eigneschaft;\\
+$$\mathbb{E}(X)= \lambda$$ und $$\Var(X)= \lambda$$\\
+.
+\end{itemize}
+\newpage 
+
+\section{ Bearbeitung zur Aufgabe 1}
+\subsection{Datenhaltung und Aufbereitung}
+Zunächst müssen wir die gegebene CSV-Datei in Excel importieren und zu einer Tabelle mit Zeilen und Spalten umwandeln. Wir öffnen eine leere Arbeitsmappe und gehen zum Reiter \enquote{Daten}, drücken auf \enquote{Daten abrufen}, dann \enquote{Aus Datei} und abschließend \enquote{Aus Text/CSV}.
+
+\begin{figure}[h] % 'h' steht für 'here' (hier)
+    \centering % Zentriert das Bild
+    \includegraphics[width=0.9\textwidth]{Tabelle1.PNG} % Bilddatei angeben
+    \caption{Tabellenkalkulation}
+   \label{fig:meinBild} % Label für Verweise
+\end{figure}
+\vspace{1cm}\
+\\Schnell fällt auf, dass nur die Spalten Group, Station, Temperaturen, Datum und Count relevant sind, da bei den übrigen Spalten Fehler vorliegen. Bei der Spalte \enquote{date} wird uns das Datum vermittelt und es liegen Daten im Zeitraum von 01.01.23 bis 31.12.23 vor. Die Spalten \enquote{wind\_speed} und \enquote{precipitation} sind irrelevant, da dort Fehler unterlaufen sind. Zudem gibt es noch eigene Spalten, die jeweils den Monat, Wochentag und Tag im Jahr angeben. Hinzukommt die Spalte \enquote{count}, wo die Anzahl der ausgeliehenen Fahrräder festgehalten wird. Diese variiert sehr stark zwischen 1 und 707.
+\\
+\newpage
+\subsection{Berechnung der höchsten mittleren Temperatur}
+\begin{itemize}
+\item per Excel
+
+Zuerst sollen wir die Werte von (NA) reinigen, deswegen gehen wir zum Spalte M. Wir umbenennen zu AVG und wir schreiben den Code: 
+$=WENNFEHLER(WERT([@[average\_temperature]]);\text{""})$\\
+mache ich  neues Blatt: umbenennen dieses Blatt zu Max\_AVG\
+Jetzt schreiben wir den Code bei Spalte B:
+
+$$ =MAX(bike\_sharing\_data\_with\_NAs[AVG]) $$
+
+\begin{figure}[h] % 'h' steht für 'here' (hier)
+    \centering % Zentriert das Bild
+    \includegraphics[width=0.9\textwidth]{Tabelle2.PNG} % Bilddatei angeben
+\caption{{\tiny Berechnung der höchsten mittleren Temperatur in Grad Celsius mit einer Tabellenkalkulation}}
+   
+    \label{fig:meinBild} % Label für Verweise
+\end{figure}
+\vspace{1cm}\
+Somit ist festzuhalten, dass die höchste mittlere Temperatur 83 Celsius gemessen wurde. 
+
+\newpage
+\item per SQLite\\
+\\Zuerst sollete die Daten importierten,\\
+wir öffnen SQLite, Von Import wir wählen die Datei(bike\_sharing\_data\_(with\_NAs))\\
+wir ändern  Column name von New-auto zu First line\\
+
+jetzt können wir auch auf die Frage antworten, indem den Code;\\
+\\SELECT DISTINCT max(average\_temperature)FROM bike\_sharing\_data\_with\_NAs
+\\WHERE average\_temperature $<>$ 'NA'
+
+
+\begin{figure}[h] % 'h' steht für 'here' (hier)
+    \centering % Zentriert das Bild
+    \includegraphics[width=0.9\textwidth]{Tabelle15.PNG} % Bilddatei angeben
+    \caption{Berechnung der höchsten mittleren Temperatur per SQLite}
+   
+    \label{fig:meinBild} % Label für Verweise
+\end{figure}\\
+
+\end{itemize}
+
+\newpage
+\subsection{Datenbank-Schema entwerfen}
+Im nächsten [\cite{SQLite}, S.45] Schritt entwerfen wir ein Datenbank-Schema mit Berücksichtigung der 1. und 2. 
+Normalform:\\
+\\
+Tabelle Temperatur (TemperaturID, mean\_temperature, max\_temperature, min\_temperature)\\
+Tabelle Tage (TageID, day\_of\_year, month\_of\_year, TemperatuID#)\\
+Tabelle Wind (WindID, wind\_speed, precipitation, TemperaturID#)\\
+Tabelle Verleih (VerleihID, TemperaturID#, SchneeID#, WindID#, count, station, date, groupnr)\\
+
+\\ #Erstellen einer Datenbank\\
+CREATE DATABASE BikeVerleih;\\
+USE BikeVerleih;\\
+
+ #Erstellen der Tabelle Temperatur\\
+CREATE TABLE Temperatur(\\ 
+TemperaturID INT PRIMARY KEY,\\
+mean\_temperature INT,\\
+max\_temperature INT,\\
+min\_temperature INT\\
+)\\
+\\
+#Erstellen der Tabelle Tage 
+CREATE TABLE Tage (\\
+DayID INT PRIMARY KEY,\\
+day\_of\_year INT,\\
+day\_of\_week INT,\\
+month\_of\_year  INT,\\
+TemperaturID INT,\\
+\\
+#Fremdschlüssel einfügen\\
+FOREIGN KEY(TemperaturID) REFERENCES Temperatur(TemperaturID)\\
+);\\
+\\
+#Erstellen der Tabelle Wind\\
+
+CREATE TABLE Wind (\\
+WindID INT PRIMARY KEY,\\
+wind\_speed INT,\\
+precipitation INT,
+TemperaturID INT,
+\\
+ #Fremdschlüssel einfügen
+FOREIGN KEY(TemperaturID) REFERENCES Temperatur(TemperaturID)
+);\\
+\\
+ #Erstellen der Tabelle Verleih\\
+CREATE TABLE Verleih (\\
+VerleihID INT PRIMARY KEY,\\
+TemperaturID INT,\\
+SchneeID INT,\\
+WindID INT,\\
+count INT,\\
+station TEXT NOT NULL,\\
+date TEXT NOT NULL,\\
+groupnr INT NOT NULL,\\
+\\
+ #Fremdschlüssel einfügen\\
+FOREIGN KEY(TemperaturID) REFERENCES Temperatur(TemperaturID),\\
+FOREIGN KEY(SchneeID) REFERENCES Schnee(SchneeID),\\
+FOREIGN KEY(WindID) REFERENCES Wind(WindID)\\
+)\\
+\vspace{2cm}\
+\begin{figure}[h] % 'h' steht für 'here' (hier)
+    \centering % Zentriert das Bild
+    \includegraphics[width=0.9\textwidth]{Tabelle8.PNG} % Bilddatei angeben
+    \caption{Tabellen erstellen von Temperatur und Tag}
+   \label{fig:meinBild} % Label für Verweise
+\end{figure}\\
+\\
+\newpage
+\subsection{Umsetzung des Schemas  und Import der zugeordneten Daten}\\
+\label{Umsetzung des Schemas  und Import der zugeordneten Daten}
+Der nächste Schritt besteht darin, die Datensätze in die passenden Tabellen zu importieren[\cite{SQLite}, S.61]:
+\begin{itemize}
+\item Zu jeder Tabelle den zugehörigen Datensatz, in einer Tabellenkalkulation, vorbereiten
+\item Öffnen der SQLite-Befehlszeile im Terminal wie folgt:\\
+sqlite3 BikeVerleih.db
+\item Dann muss man den Modus auf CSV setzen:\\
+         .mode csv            
+\item Nun können wir die Daten importieren:\\
+.import „Datei.csv“ Tabelle (wobei Datei.csv der Dateipfad der 
+Tabellenkalkulation und Tabelle die zugehörige Tabelle in SQLite ist)
+
+\item Jetzt sind die zugehörigen Daten importiert und man kann folgenden\\ Befehl benutzen:\\
+SELECT * From Tabelle (Tabelle steht hier für den Tabellennamen)
+\end{itemize}
+
+\newpage
+\subsection{Ermitteln höchste mittlere Temperatur}
+
+wir können die höchste mittlere Temperatur in Grad Celsius aus der Gruppe zugeordneten Daten ermitteln, in dem den Code:\\
+
+SELECT groupnr , max(average\_temperature)\\
+FROM bike\_sharing\_data\_with\_NAs\\
+WHERE average\_temperature $<>$ 'NA'\\
+GROUP BY groupnr
+
+
+\begin{figure}[h] % 'h' steht für 'here' (hier)
+    \centering % Zentriert das Bild
+    \includegraphics[width=0.9\textwidth]{Tabelle16.PNG} % Bilddatei angeben
+    \caption{Berechnung der höchsten mittleren Temperatur per SQLite}
+   \label{fig:meinBild} % Label für Verweise
+\end{figure}\\
+\ somit ist es festzuhalten, dass die höchste mittlere Temperatur aus den
+allen Gruppen zugeordneten Daten  83 Grad Celsius sind.\\
+
+
+\printbibliography
+
+\end{document}
+
+
+
+
+
+
+
+
